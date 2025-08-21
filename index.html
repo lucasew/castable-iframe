@@ -22,7 +22,8 @@
   <iframe frameborder="0" allowfullscreen id="content"></iframe>
   <script>
     (function () {
-      const url = prompt("URL:")
+      const params = new URLSearchParams(window.location.search)
+      const url = params.has('url') ? params.get('url') : prompt("URL:")
       document.getElementById('content').src = url
     })()
   </script>
