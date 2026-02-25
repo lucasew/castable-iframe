@@ -1,0 +1,8 @@
+[tasks.ci]
+run = """
+if [ ! -f src/style.css ]; then echo 'src/style.css missing'; exit 1; fi
+if [ ! -f src/script.js ]; then echo 'src/script.js missing'; exit 1; fi
+if ! grep -q 'link rel="stylesheet" href="src/style.css"' index.html; then echo 'CSS link missing'; exit 1; fi
+if ! grep -q 'script src="src/script.js"' index.html; then echo 'JS script missing'; exit 1; fi
+echo 'CI Passed'
+"""

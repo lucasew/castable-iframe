@@ -3,30 +3,12 @@
 
 <head>
   <title>Streamable iframe</title>
-  <style>
-    body {
-      margin: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    iframe {
-      width: 100vw;
-      height: 100vh;
-    }
-  </style>
+  <link rel="stylesheet" href="src/style.css">
 </head>
 
 <body>
   <iframe frameborder="0" allowfullscreen id="content"></iframe>
-  <script>
-    (function () {
-      const params = new URLSearchParams(window.location.search)
-      const url = params.has('url') ? params.get('url') : prompt("URL:")
-      document.getElementById('content').src = url
-    })()
-  </script>
+  <script src="src/script.js"></script>
 </body>
 
 </html>
