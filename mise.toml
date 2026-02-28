@@ -1,0 +1,17 @@
+[tasks.ci]
+description = "Verify file structure"
+run = [
+    "test -f index.html || { echo 'index.html missing'; exit 1; }",
+    "test -f src/shared/errorReporter.js || { echo 'src/shared/errorReporter.js missing'; exit 1; }",
+    "grep -q 'script src=\"src/shared/errorReporter.js\"' index.html || { echo 'Error reporter missing from index.html'; exit 1; }",
+    "echo 'CI Passed'"
+]
+
+[tasks.test]
+description = "Verify file structure"
+run = [
+    "test -f index.html || { echo 'index.html missing'; exit 1; }",
+    "test -f src/shared/errorReporter.js || { echo 'src/shared/errorReporter.js missing'; exit 1; }",
+    "grep -q 'script src=\"src/shared/errorReporter.js\"' index.html || { echo 'Error reporter missing from index.html'; exit 1; }",
+    "echo 'Tests Passed'"
+]
