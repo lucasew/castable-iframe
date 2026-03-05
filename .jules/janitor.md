@@ -1,1 +1,1 @@
-- 2026-03-05: Always enclose bare URLs in markdown with angle brackets and keep HTML tags properly indented and formatted.
+- 2026-03-05: Always enclose bare URLs in markdown with angle brackets.
