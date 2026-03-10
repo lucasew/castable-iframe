@@ -1,0 +1,1 @@
+- 2026-03-10: Reflected XSS vulnerabilities in iframe src attributes can be spotted by checking if user-controlled input is assigned to the src without validating that it uses a safe protocol like http:// or https://.

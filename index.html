@@ -23,9 +23,16 @@
   <script>
     (function () {
       const params = new URLSearchParams(window.location.search)
-      const url = params.has('url') ? params.get('url') : prompt("URL:")
-      document.getElementById('content').src = url
-    })()
+      let url = params.has('url') ? params.get('url') : prompt("URL:")
+      if (url) {
+        url = url.trim();
+        if (url.startsWith('http://') || url.startsWith('https://')) {
+          document.getElementById('content').src = url;
+        } else {
+          alert("Invalid URL. Only http:// and https:// are allowed.");
+        }
+      }
+    })();
   </script>
 </body>
 
