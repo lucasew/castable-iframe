@@ -1,0 +1,66 @@
+name: autorelease
+
+on:
+  push:
+    branches:
+      - master
+      - main
+    tags:
+      - '*'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install mise
+        uses: jdx/mise-action@v2
+
+      - name: Install dependencies
+        run: mise run install
+
+      - name: Run codegen
+        run: mise run codegen
+
+      - name: Check for generated file changes
+        id: git-diff
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create PR for codegen
+        if: steps.git-diff.outputs.changes == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: "🤖 Codegen: Auto-update generated files"
+          commit-message: "chore(codegen): auto-update generated files"
+          branch: "codegen-update"
+          delete-branch: true
+
+      - name: CI checks
+        run: mise run ci
+
+      - name: Release
+        if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create ${{ github.ref_name }} --generate-notes
+
+      - name: Upload artifacts
+        if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/')
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifacts
+          path: .

@@ -1,0 +1,43 @@
+[tools]
+"ubi:lucasew/workspaced" = "0.2.2"
+
+[tasks]
+lint = "workspaced codebase lint"
+fmt = "workspaced codebase format"
+
+[tasks.test]
+depends = ["test:*"]
+
+[tasks."test:noop"]
+run = "true"
+
+[tasks.codegen]
+depends = ["codegen:*"]
+
+[tasks."codegen:noop"]
+run = "true"
+
+[tasks.install]
+depends = ["install:*"]
+
+[tasks."install:detect"]
+run = """
+if [ -f package-lock.json ]; then
+  npm ci
+elif [ -f yarn.lock ]; then
+  yarn install --frozen-lockfile
+elif [ -f pnpm-lock.yaml ]; then
+  pnpm install --frozen-lockfile
+elif [ -f bun.lockb ] || [ -f bun.lock ]; then
+  bun install --frozen-lockfile
+elif [ -f go.mod ]; then
+  go mod download
+elif [ -f Cargo.lock ]; then
+  cargo fetch
+else
+  echo "No known package manager found, skipping install."
+fi
+"""
+
+[tasks.ci]
+depends = ["lint", "test"]
