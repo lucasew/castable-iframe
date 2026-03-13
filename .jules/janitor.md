@@ -1,0 +1,1 @@
+- 2024-05-23: Ensure all HTML documents include a lang attribute on the html tag and a utf-8 charset meta tag for accessibility and browser standard compliance.
