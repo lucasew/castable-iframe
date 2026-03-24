@@ -20,12 +20,11 @@
 
 <body>
   <iframe frameborder="0" allowfullscreen id="content"></iframe>
-  <script>
-    (function () {
-      const params = new URLSearchParams(window.location.search)
-      const url = params.has('url') ? params.get('url') : prompt("URL:")
-      document.getElementById('content').src = url
-    })()
+  <script type="module">
+    import { IframeApp } from './src/core/IframeApp.js';
+
+    const app = new IframeApp(window, document);
+    app.run();
   </script>
 </body>
 

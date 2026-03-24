@@ -1,0 +1,1 @@
+- 2026-03-24: Extracted core domain logic into classes and centralized error handling to adhere to Single Responsibility Principle and improve testability.
