@@ -1,0 +1,16 @@
+📝 Docs: Update README.md with detailed usage and security considerations
+
+Assumptions:
+- The project documentation in `README.md` lacked a clear explanation of how the application works, its requirements, and the specific security risks associated with the required extension.
+- Adding this documentation significantly improves onboarding and user understanding without changing any code or execution behavior.
+- I am operating strictly within the allowed scope for the Docs agent (modifying `*.md` files).
+
+Alternatives Not Chosen:
+- Adding documentation inside `index.html`: Rejected because `index.html` is outside the allowed paths for the Docs agent.
+- Ignoring the security implications: Rejected because educating users about the risks of running an extension that broadly disables security headers is critical.
+
+How To Pivot:
+- If the instructions should be more technical, or if the exact extension link should be removed, the `README.md` text can be modified directly.
+
+Next Knobs:
+- `README.md`: Adjust the wording, add more specific warnings, or include screenshots if needed.
