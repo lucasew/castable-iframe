@@ -1,0 +1,1 @@
+- 2026-03-24: Iframes rendering arbitrary external URLs must always use the sandbox attribute without allow-top-navigation to prevent malicious sites from hijacking the parent window.
