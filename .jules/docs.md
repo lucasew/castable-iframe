@@ -1,0 +1,1 @@
+- 2024-05-24: When configuring the repository, prefer codifying vague practices into AGENTS.md directly over asking the user for clarification.
