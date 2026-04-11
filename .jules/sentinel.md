@@ -1,0 +1,1 @@
+- 2026-04-11: Prevent sensitive information leaks via Referer header by applying `referrerpolicy="no-referrer"` on iframes that load arbitrary user-provided URLs.
