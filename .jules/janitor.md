@@ -1,0 +1,1 @@
+- 2026-06-13: Always apply Prettier formatting and use semi-colons and double quotes to ensure consistent HTML and inline JavaScript.
