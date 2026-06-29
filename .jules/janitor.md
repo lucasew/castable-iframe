@@ -1,0 +1,1 @@
+- 2026-06-29: Implemented centralized error reporting in index.html without extracting external scripts.

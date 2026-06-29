@@ -22,10 +22,20 @@
   <iframe frameborder="0" allowfullscreen id="content"></iframe>
   <script>
     (function () {
-      const params = new URLSearchParams(window.location.search)
-      const url = params.has('url') ? params.get('url') : prompt("URL:")
-      document.getElementById('content').src = url
-    })()
+      function reportError(error, context) {
+        console.error("Centralized Error Reporter:", error, context);
+      }
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const url = params.has("url") ? params.get("url") : prompt("URL:");
+        if (!url) {
+          throw new Error("No URL provided");
+        }
+        document.getElementById("content").src = url;
+      } catch (error) {
+        reportError(error, { location: "index.html init" });
+      }
+    })();
   </script>
 </body>
 
