@@ -1,32 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Streamable iframe</title>
+    <style>
+      body {
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
 
-<head>
-  <title>Streamable iframe</title>
-  <style>
-    body {
-      margin: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-    }
+      iframe {
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+  </head>
 
-    iframe {
-      width: 100vw;
-      height: 100vh;
-    }
-  </style>
-</head>
-
-<body>
-  <iframe frameborder="0" allowfullscreen id="content"></iframe>
-  <script>
-    (function () {
-      const params = new URLSearchParams(window.location.search)
-      const url = params.has('url') ? params.get('url') : prompt("URL:")
-      document.getElementById('content').src = url
-    })()
-  </script>
-</body>
-
+  <body>
+    <iframe frameborder="0" allowfullscreen id="content"></iframe>
+    <script>
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        const url = params.has("url") ? params.get("url") : prompt("URL:");
+        document.getElementById("content").src = url;
+      })();
+    </script>
+  </body>
 </html>
